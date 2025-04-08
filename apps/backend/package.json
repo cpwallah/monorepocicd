@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+   "build":"tsc -b",
+   "dev":"pnpm run build && pnpm run start",
+   "start":"node ./dist/index.js"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies":{
+    "@repo/db":"workspace:*",
+    "@repo/typescript-config":"workspace:*"
+  },
+  "dependencies": {
+    "db": "*",
+    "@types/express": "^5.0.1",
+    "express": "^5.1.0"
+  }
+}
