@@ -1,5 +1,5 @@
 import express from "express";
-import { prismaClient } from "@repo/db/client"; // Ensure correct import path
+import { Prismaclient } from "@repo/db/client"; // Ensure correct import path
 
 const app = express();
 app.use(express.json());
@@ -7,7 +7,7 @@ app.use(express.json());
 // GET /users endpoint
 app.get("/users", async (req, res) => {
   try {
-    const users = await prismaClient.user.findMany(); // Make sure 'user' matches your model in Prisma
+    const users = await Prismaclient.user.findMany(); // Make sure 'user' matches your model in Prisma
     res.json(users);
   } catch (err) {
     res
@@ -26,7 +26,7 @@ app.post("/user", async (req, res) => {
   }
 
   try {
-    const user = await prismaClient.user.create({
+    const user = await Prismaclient.user.create({
       data: {
         Username,
         Password,

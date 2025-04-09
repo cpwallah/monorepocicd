@@ -1,5 +1,5 @@
 import WebSocket from "ws"; // Importing the 'ws' library for WebSocket functionality
-import { prismaClient } from "@repo/db/client"; // Assuming you have the Prisma client set up
+import { Prismaclient } from "@repo/db/client"; // Assuming you have the Prisma client set up
 
 // Create a WebSocket server listening on port 8081
 const wss = new WebSocket.Server({ port: 8081 });
@@ -14,7 +14,7 @@ wss.on("connection", (ws) => {
 
     // Create a new user in the database using Prisma when a message is received
     try {
-      const newUser = await prismaClient.user.create({
+      const newUser = await Prismaclient.user.create({
         data: {
           Username: Math.random().toString(),
           Password: Math.random().toString(),

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { client } from "@repo/db/client";
+import { Prismaclient } from "@repo/db/client";
 
 export async function Get() {
-  const user = await client.user.findFirst();
+  const user = await Prismaclient.user.findFirst();
   return NextResponse.json({ user });
 }
