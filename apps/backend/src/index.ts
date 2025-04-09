@@ -1,8 +1,10 @@
 import express from "express";
+import cors from "cors";
 import { Prismaclient } from "@repo/db/client"; // Ensure correct import path
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // GET /users endpoint
 app.get("/users", async (req, res) => {

@@ -1,7 +1,16 @@
-import { NextResponse } from "next/server";
-import { Prismaclient } from "@repo/db/client";
+// app/api/users/route.ts
+import { PrismaClient } from "@prisma/client";
 
-export async function Get() {
-  const user = await Prismaclient.user.findFirst();
-  return NextResponse.json({ user });
+const prisma = new PrismaClient();
+
+export async function GET() {
+  try {
+    const users = await prisma.user.findMany();
+    return Response.json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    return new Response("Failed to fetch users", { status: 500 });
+  } finally {
+    await prisma.$disconnect(); // optional but clean
+  }
 }
