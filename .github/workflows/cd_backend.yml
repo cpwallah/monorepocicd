@@ -22,4 +22,4 @@ jobs:
           context: .
           file: ./docker/Dockerfile.backend
           push: true
-          tags: cpwallah/user-app-backend:${{ github.sha }}
+          tags: cpwallah/user-app-backend:latest
