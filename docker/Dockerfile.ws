@@ -13,7 +13,7 @@ COPY ./turbo.json ./turbo.json
 COPY ./apps/ws ./apps/ws
 
 RUN pnpm install
-RUN cd packages/db && pnpm prisma migrate dev && cd ../..
+RUN cd packages/db && pnpm prisma generate && cd ../..
 RUN pnpm run build
 
 EXPOSE 8081

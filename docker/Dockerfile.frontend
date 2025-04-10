@@ -4,6 +4,7 @@ RUN npm install -g pnpm
 
 WORKDIR /usr/src/app
 
+ARG DATABASE_URL
 COPY ./packages ./packages
 COPY ./pnpm-lock.yaml ./pnpm-lock.yaml
 
@@ -13,9 +14,9 @@ COPY ./turbo.json ./turbo.json
 COPY ./apps/web ./apps/web
 
 RUN pnpm install
-RUN cd packages/db && pnpm prisma migrate dev && cd ../..
-RUN pnpm run build
+RUN cd packages/db && pnpm prisma generate && cd ../..
+RUN DATABASE_URL=${DATABASE_URL} pnpm run build
 
-EXPOSE 8081
+EXPOSE 3000
 
 CMD ["pnpm","start"]
