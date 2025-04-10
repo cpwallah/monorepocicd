@@ -1,4 +1,4 @@
-name: Continuous Deployment (Prod) (Backend)
+name: Continuous Deployment (Prod) (Frontend)
 
 on:
   push:
