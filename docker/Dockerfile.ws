@@ -4,13 +4,14 @@ RUN npm install -g pnpm
 
 WORKDIR /usr/src/app
 
-COPY ./packages ./packages
-COPY ./pnpm-lock.yaml ./pnpm-lock.yaml
+# COPY ./packages ./packages
+# COPY ./pnpm-lock.yaml ./pnpm-lock.yaml
 
-COPY ./packages.json ./packages.json
-COPY ./turbo.json ./turbo.json
+# COPY ./packages.json ./packages.json
+# COPY ./turbo.json ./turbo.json
 
-COPY ./apps/ws ./apps/ws
+# COPY ./apps/ws ./apps/ws
+COPY . .
 
 RUN pnpm install
 RUN cd packages/db && pnpm prisma generate && cd ../..
